@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+      function validate()
+{
+   var ageip=document.getElementById("age").value;
+   var pwdip=document.getElementById("pwd").value;
+   var cpwdip=document.getElementById("cpwd").value;
+   var mnoip=document.getElementById("mno").value;
+  if(Age(ageip,12,50)){
+      if(Pass(pwdip,8))
+      {
+          if(Confirm(cpwdip,pwdip)){
+              if(Mobile(mnoip)){}
+          }
+      }
+  }
+  return false;
+ 
+}
+function Age(ageip,min,max){
+    
+    if(ageip<min || ageip> max){
+   document.getElementById("ageres").innerHTML= "*Age should be greater than 12 and less than 50";
+   return false;
+}
+else
+return true;
+}
+function Pass(pwdip,min){
+      var  minMaxLength = /^[\s\S]{8,100}$/,
+      upper = /[A-Z]/,
+        
+         number = /[0-9]/,
+     special = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+    
+     if (minMaxLength.test(pwdip) &&   upper.test(pwdip
+            ) &&              number.test(pwdip) &&        special.test(pwdip)    ) {
+   
+      
+        return true;
+    }
+    else{
+        document.getElementById("passres").innerHTML= "*Password should contain an Uppercase letter,special character,digit and its length should be greater than 8.";
+    
+    return false;
+    }
+}
+function Confirm(cpwdip,pwdip)
+{
+    if(cpwdip==pwdip)
+    return true;
+    else{
+        document.getElementById("cpassres").innerHTML= "*Password and confirm password should match.Age should be greater than 12 and less than 50";
+        return false;
+    }
+}
+function Mobile(mnoip)
+{
+    if (isNaN(mnoip) || mnoip.length<10 || mnoip.length>10){  
+  document.getElementById("mnores").innerHTML="Enter Numeric value only";  
+  return false;  
+}else{  
+  return true;  
+  }  
+}  
+//     if(isNaN(mnoip)){
+//     document.getElementById("mnores").innerHTML="Enter 10 digits";  
+// return false;
+//     }
+//     else
+//     return true;
+//  if(mnoip.value.length==10)
+//  return true;
+//  else{
+//     document.getElementById("mnores").innerHTML="Enter 10 digits";  
+//     return false;
+//  }
+
+
+//     // var phone = document.forms["myForm"]["phone"].value;
+//     if (isNaN(mnoip)){  
+//   document.getElementById("mnores").innerHTML="Enter Numeric value only";  
+//   return false;  
+               
+//             }
+//             else {
+                
+//                 return true;
+//             }
+//}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>Sign Up</h2>
+  <form >
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" placeholder="Enter age" name="age" required>
+        <span id="ageres" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label for="mno">Mobile Number:</label>
+        <input type="text" class="form-control" id="mno" placeholder="Enter mobile number" name="mno">
+        <span id="mnores" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" id="dob" placeholder="Enter dob" name="dob">
+      </div>
+      <div class="form-group">
+        <label id="gender">Sex:</label>
+        <input type="radio" name="msex" value="Male" /><span>Male</span>
+        <input type="radio" name="fsex" value="Female" /><span>Female</span>
+       
+      </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      <span id="passres"  style="color: red;"></span>
+    </div>
+    <div class="form-group">
+        <label for="cpwd">Confirm Password:</label>
+        <input type="text" class="form-control" id="cpwd" placeholder="Enter confirm password" name="cpwd">
+        <span id="cpassres" style="color: red;"></span>
+      </div>
+    <button type="submit" class="btn btn-default" onclick="return validate()">Submit</button>
+  </form>
+</div>
+<div style="border: 1px solid;width: 100px;height: 200px" id="main">
+    
+</div>
+</body>
+</html>

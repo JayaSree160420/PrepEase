@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Design Agency</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .prop{
+      line-height: 5;
+    text-align: center;
+    text-transform: uppercase;
+    }
+    h1{
+      text-align: center;
+    position: relative;
+    font-family: bold;
+    font-weight: 1000;
+    font-size: -webkit-xxx-large;
+    top: 30%;
+    }
+    p{
+    
+    position: relative;
+    top: 33%;
+   
+  
+    font-size: large;
+    line-height: 2;
+    font-family: -webkit-body;
+    }
+  
+
+
+  </style>
+</head>
+ <script>
+   function content(){
+     document.getElementById('main').innerHTML='';
+  var namediv=document.createElement('div');
+  namediv.innerHTML=`<br> <form name="myform" id="test">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+        <span id="nameres" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" placeholder="Enter age" name="age" required>
+        <span id="ageres" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label for="mno">Mobile Number:</label>
+        <input type="text" class="form-control" id="mno" placeholder="Enter mobile number" name="mno" required>
+        <span id="mnores" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" id="dob" placeholder="Enter dob" name="dob" required>
+        <span id="dobres" style="color: red;"></span>
+      </div>
+      <div class="form-group">
+        <label id="gender">Sex:</label>
+        <input type="radio" name="gender" id=male" value="Male"  /><span>Male</span>
+        <input type="radio" name="gender" id="female" value="Female" /><span>Female</span>
+        <span id="ranres" style="color: red;"></span>
+      </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+      <span id="emailres" style="color: red;"></span>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+      <span id="passres"  style="color: red;"></span>
+    </div>
+    <div class="form-group">
+        <label for="cpwd">Confirm Password:</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Enter confirm password" name="cpwd">
+        <span id="cpassres" style="color: red;"></span>
+      </div>
+    <button type="submit" class="btn btn-default" onclick="return validate()">Submit</button>
+  </form>`
+
+  document.getElementById("main").appendChild(namediv);
+
+   }
+   function validate()
+{          
+  var now;          
+   var nameip=document.getElementById('name').value;
+   var dobip=document.getElementById('dob').value;
+   var emailip=document.getElementById('email').value;
+ 
+   var ageip=document.getElementById("age").value;
+   var pwdip=document.getElementById("pwd").value;
+   var cpwdip=document.getElementById("cpwd").value;
+   var mnoip=document.getElementById("mno").value;
+   if(Name(nameip)){
+  if(Age(ageip,12,50)){
+    if(Mobile(mnoip)){
+      if(DOB(dobip)){
+    
+        if(Mail(emailip)){
+      if(Pass(pwdip,8))
+      {
+          if(Confirm(cpwdip,pwdip)){
+
+            
+           document.getElementById('main').innerHTML='';
+            var  result=document.createElement('div');
+            result.setAttribute('class','prop');
+            
+  result.innerHTML="<b>Name:</b>"+" "+" "+" "+" "+nameip +"<br>"+
+                   "<b>Age:</b>"+" "+" "+" "+" "+ageip+"<br>"+
+                   "<b>Mobile Number:</b>"+" "+" "+" "+" "+mnoip+"<br>"+
+                   
+                   "<b>Date Of Birth:</b>"+" "+" "+" "+" "+dobip+"<br>"+
+                   "<b>Email:</b>"+" "+" "+" "+" "+emailip+"<br>"+"<br><br><br><br>"+"<a href='index.html' style='color:red'><b>Succesfully Submmitted!!   Click Here</b></a>" ;
+
+  document.getElementById("main").appendChild(result);
+                return true;
+              }
+          }
+      }
+      
+  }
+  }
+}
+  }
+ 
+ 
+ 
+  return false;
+ 
+}
+
+function Name(nameip)
+{
+
+  if(nameip=='')
+  {
+    document.getElementById("nameres").innerHTML= "*Please enter ur name";
+    return false;
+  }
+  else
+  return true;
+}
+function Age(ageip,min,max){
+    
+    if(ageip<min || ageip> max){
+   document.getElementById("ageres").innerHTML= "*Age should be greater than 12 and less than 50";
+   return false;
+}
+else
+return true;
+}
+function  DOB(dobip)
+{
+  if(dobip==''){
+    document.getElementById("dobres").innerHTML= "*Please enter ur DOB";
+   return false;
+  }
+  else
+  return true;
+}
+
+
+
+
+function Mail(emailip)
+{
+  if(emailip=='')
+  {
+    document.getElementById("emailres").innerHTML= "*Please enter ur Email ID";
+   return false;
+  }
+  else
+  return true;
+}
+function Pass(pwdip,min){
+      var  minMaxLength = /^[\s\S]{8,100}$/,
+      upper = /[A-Z]/,
+        
+         number = /[0-9]/,
+     special = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+    
+     if (minMaxLength.test(pwdip) &&   upper.test(pwdip
+            ) &&              number.test(pwdip) &&        special.test(pwdip)    ) {
+   
+      
+        return true;
+    }
+    else{
+        document.getElementById("passres").innerHTML= "*Password should contain an Uppercase letter,special character,digit and its length should be greater than 8.";
+    
+    return false;
+    }
+}
+function Confirm(cpwdip,pwdip)
+{
+    if(cpwdip==pwdip)
+    return true;
+    else{
+        document.getElementById("cpassres").innerHTML= "*Password and confirm password should match.Age should be greater than 12 and less than 50";
+        return false;
+    }
+}
+ 
+function Mobile(mnoip){
+
+
+var IndNum = /[6789]\d{9}$/;
+
+if(IndNum.test(mnoip)){
+   return true;
+}
+
+else{
+  document.getElementById("mnores").innerHTML="Phone no. field should accept only number and have max length of 10"; 
+return false;
+}
+
+}
+</script> 
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a style="color: white;" class="navbar-brand" href="#">Design Agency Home Page</a>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+
+        <li class="active"><a href="#">Landing</a></li>
+        <li class="active"><a href="index.html">Home</a></li>
+        <li class="active"><a href="#">About</a></li>
+        <li class="active"><a href="#">Contact</a></li>
+        <li class="active"><a href="#">Blog</a></li>
+        <li class="active"><a href="#">Case Study</a></li>
+        <li class="active"><a href="#">Portfolio</a></li>
+        <li class="active"><a href="#">Project1</a></li>
+        <li class="active"><a href="#">Project2</a></li>
+        <li class="active"><a href="javascript:content()">Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+      
+    </ul>
+  </div>
+</nav>
+  <div class="whole" id="main" style="width: 520px;height: 750px;float: left;margin-left: 60px;background-repeat: no-repeat;background-size: cover;">
+    <h1>DESIGN AGENCY</h1>
+    <p>
+      It is a long established fact thar a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has normal.
+    </p>
+  </div>
+
+<div class="container"  id="main1" style="position: absolute;
+left: 50%;
+top: 20%;width: 549px;
+height: 591px;">
+ 
+  
+  <img class="img-responsive" src="pic.JPG" alt="Chania" width="600" height="600"> 
+</div>
+</body>
+</html>
